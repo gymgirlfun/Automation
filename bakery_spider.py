@@ -2,8 +2,14 @@ import scrapy
 
 class BakerySpider(scrapy.Spider):
   name = 'bakery'
-  start_urls = ['https://keewahsf.com/collections/in-store-pick-up-only',]
+#   start_urls = ['https://keewahsf.com/collections/in-store-pick-up-only',]
 
+# scrapy crawl bakery -a category=in-store-pick-up-only
+  def __init__(self, category=None, *args, **kwargs):  
+    super(BakerySpider, self).__init__(*args, **kwargs)
+    self.start_urls = [f'https://keewahsf.com/collections/{category}',]
+    
+    
   def parse(self, response):
     for item in response.css('div.info'):
       yield {
