@@ -114,7 +114,7 @@ else:
 print("Redacted Message:".center(50, "="))
 redacted = phoneRegex.sub(r"\4*******", messages)
 redacted = emailRegex.sub(r"****\2", redacted)
-print(phoneRegex.sub(r"\4*******", redacted))
+print(redacted)
 
 
 
